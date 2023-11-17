@@ -1,6 +1,11 @@
+import asyncio
 
-from SgsIndexes import Indexes
+from classes.DfToDatabase import DfToDatabase
+from classes.SgsIndexes import Indexes
 
+if __name__ == '__main__': 
+  df = asyncio.run(Indexes.main())
+  engine = DfToDatabase(df = df)
 
-def exec():
-  pass
+  result = engine.create_engine(engine.df)
+  print(result)

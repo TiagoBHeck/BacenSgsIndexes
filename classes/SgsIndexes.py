@@ -50,24 +50,30 @@ class Indexes(Enum):
     Start = '2010-01-01'
     
     async def get_sgs_indexes(ipca:int, inpc:int, igp_m:int, selic:int, start_date:str) -> pd.DataFrame:
-        """ Gets and prints the spreadsheet's header columns
+        """ Call Bacen SGS API and returns a dataframe with data retrieved
 
         Parameters
         ----------
-        file_loc : str
-            The file location of the spreadsheet
-        print_cols : bool, optional
-            A flag used to print the columns to the console (default is False)
+        ipca : int
+            number referring to the time series for ipca
+        inpc : int
+            number referring to the time series for inpc
+        igp_m : int
+            number referring to the time series for igp-m
+        selic : int
+            number referring to the time series for selic
+        start_date: string
+            string referring to start date of series collection
         
         Raises
         ------
         RuntimeError
-            Lorem ipsum.
+            Exception raised if API does not return requested data in sufficient time.
 
         Returns
         -------
         DataFrame
-            Lorem ipsum
+            Data structure returns with date, index and individual value columns.
         """
         today = datetime.date.today()
         first = today.replace(day=1)
@@ -86,8 +92,12 @@ class Indexes(Enum):
           
           
     async def main():
-        """
+        """  Main Indexes class function that calls the Bacen API call function       
         
+        Returns
+        -------
+        DataFrame
+            Data structure returned after asynchronous task execution.        
         """
         ipca = Indexes.IPCA.value
         inpc = Indexes.INPC.value
@@ -97,9 +107,3 @@ class Indexes(Enum):
         task = asyncio.create_task(Indexes.get_sgs_indexes(ipca, inpc, igp_m, selic, start_date))
         await task   
         return task.result()  
-      
-
-if __name__ == "__main__":    
-    df = asyncio.run(Indexes.main())
-    print(df)
-
