@@ -1,6 +1,7 @@
 import asyncio
 
 import pandas as pd
+
 from classes.DfToDatabase import DfToDatabase
 from classes.SgsIndexes import Indexes
 
@@ -25,4 +26,3 @@ if __name__ == '__main__':
     except ValueError:
       raise "ValueError raised on traying to save rows"
     
-  

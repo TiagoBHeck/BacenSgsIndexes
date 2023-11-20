@@ -9,6 +9,7 @@ environment you are running this script in.
 import os
 
 import pandas as pd
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
 
@@ -46,11 +47,12 @@ class DfToDatabase():
         Args:
             df (pd.DataFrame): Bacen SGS dataframe
         """
-        self.host = "localhost"
-        self.database = "FinDB"
-        self.user = "tiagobratzheck"
-        self.password = "tiagobratzheck"
-        self.schema = "transactions"
+        self.env = load_dotenv()         
+        self.host = os.getenv('HOST')
+        self.database = os.getenv('DATABASE')
+        self.user = os.getenv('USER')
+        self.password = os.getenv('PASSWORD')
+        self.schema = os.getenv('SCHEMA')
         self.df = self.melt_and_prepare_df(df)
     
     
@@ -86,7 +88,7 @@ class DfToDatabase():
 
         Returns:
             int | None: Number os rows affected
-        """      
+        """                 
         engine = create_engine(
           f'postgresql+psycopg2://{self.user}:{self.password}@{self.host}:5432/{self.database}',
             connect_args={'options': '-csearch_path={}'.format('transactions')}
