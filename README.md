@@ -23,6 +23,7 @@
 #### To run the project script it is necessary to install the following libraries:
 
   > pip install python-bcb
+  &nbsp;
   > pip install pandas
   > pip install sqlalchemy
   > pip install dotenv
