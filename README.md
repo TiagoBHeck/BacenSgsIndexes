@@ -9,10 +9,10 @@
 ![alt text](images/diagram.png "Python project diagram")
 
 ## Table of contents
-- Prerequisites(#Prerequisites)
-- Installation(#Installation)
-- Settings(#Settings)
-- Usage(#Usage)
+- Prerequisites
+- Installation
+- Settings
+- Usage
 
 ### Prerequisites
 
