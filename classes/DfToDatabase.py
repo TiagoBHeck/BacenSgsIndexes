@@ -47,9 +47,10 @@ class DfToDatabase():
         Args:
             df (pd.DataFrame): Bacen SGS dataframe
         """
-        self.env = load_dotenv()         
+        self.env = load_dotenv()                 
         self.host = os.getenv('HOST')
-        self.database = os.getenv('DATABASE')
+        self.port = os.getenv('PORT')
+        self.database = os.ebegtvgetenv('DATABASE')
         self.user = os.getenv('USER')
         self.password = os.getenv('PASSWORD')
         self.schema = os.getenv('SCHEMA')
@@ -90,8 +91,8 @@ class DfToDatabase():
             int | None: Number os rows affected
         """                 
         engine = create_engine(
-          f'postgresql+psycopg2://{self.user}:{self.password}@{self.host}:5432/{self.database}',
-            connect_args={'options': '-csearch_path={}'.format('transactions')}
+          f'postgresql+psycopg2://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}',
+            connect_args={'options': '-csearch_path={}'.format(self.schema)}
         )       
         try:
             result = df.to_sql('SgsIndexes', engine, if_exists='append')

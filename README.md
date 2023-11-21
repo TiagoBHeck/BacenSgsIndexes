@@ -35,6 +35,7 @@
 
 ```shell
 HOST=your_host_here
+PORT=port_here
 DATABASE=databse_here
 USER=user_here
 PASSWORD=user_password_here
