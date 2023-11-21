@@ -22,7 +22,7 @@ if __name__ == '__main__':
     exec = Exec()
     try:
       rows = exec.save_to_db(exec.df)
-      print(f'Total number os rows inserted in database: {rows}')
+      print(f'Total number of rows inserted in database: {rows}')
     except ValueError:
       raise "ValueError raised on traying to save rows"
     
