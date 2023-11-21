@@ -22,11 +22,12 @@
 
 #### To run the project script it is necessary to install the following libraries:
 
-  > pip install python-bcb
-  &nbsp;
-  > pip install pandas
-  > pip install sqlalchemy
-  > pip install dotenv
+```bash
+  pip install python-bcb 
+  pip install pandas
+  pip install sqlalchemy
+  pip install dotenv
+```
 
 ### Settings
 
